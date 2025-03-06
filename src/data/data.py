@@ -1,5 +1,7 @@
 import pytest
 from src.data.data import Data
+from .data import Data
+
 
 class TestData:
     def setup_method(self):
