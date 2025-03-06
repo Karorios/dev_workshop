@@ -1,125 +1,75 @@
-class Data:
-    """
-    Clase con métodos para operaciones y manipulaciones de estructuras de datos.
-    Incluye implementaciones y algoritmos para arreglos, listas y otras estructuras.
-    """
+import pytest
+from src.data.data import Data
+
+class TestData:
+    def setup_method(self):
+        self.data = Data()
     
-    def invertir_lista(self, lista):
-        """
-        Invierte el orden de los elementos en una lista sin usar reversed() o lista[::-1].
-        
-        Args:
-            lista (list): Lista a invertir
-            
-        Returns:
-            list: Lista con los elementos en orden inverso
-        """
-        pass
+    def test_invertir_lista(self):
+        assert self.data.invertir_lista([1, 2, 3, 4, 5]) == [5, 4, 3, 2, 1]
+        assert self.data.invertir_lista([]) == []
+        assert self.data.invertir_lista([42]) == [42]
+        assert self.data.invertir_lista(["a", "b", "c"]) == ["c", "b", "a"]
     
-    def buscar_elemento(self, lista, elemento):
-        """
-        Busca un elemento en una lista y devuelve su índice (o -1 si no existe).
-        Implementación manual sin usar index().
-        
-        Args:
-            lista (list): Lista donde buscar
-            elemento: Elemento a buscar
-            
-        Returns:
-            int: Índice del elemento o -1 si no se encuentra
-        """
-        pass
+    def test_buscar_elemento(self):
+        assert self.data.buscar_elemento([10, 20, 30, 40, 50], 30) == 2
+        assert self.data.buscar_elemento([10, 20, 30, 40, 50], 60) == -1
+        assert self.data.buscar_elemento([10, 20, 30, 20, 50], 20) == 1
+        assert self.data.buscar_elemento([], 42) == -1
     
-    def eliminar_duplicados(self, lista):
-        """
-        Elimina elementos duplicados de una lista sin usar set().
-        Mantiene el orden original de aparición.
-        
-        Args:
-            lista (list): Lista con posibles duplicados
-            
-        Returns:
-            list: Lista sin elementos duplicados
-        """
-        pass
+    def test_eliminar_duplicados(self):
+        assert self.data.eliminar_duplicados([1, 2, 2, 3, 4, 4, 5]) == [1, 2, 3, 4, 5]
+        assert self.data.eliminar_duplicados([1, 2, 3, 4, 5]) == [1, 2, 3, 4, 5]
+        assert self.data.eliminar_duplicados([]) == []
+        assert self.data.eliminar_duplicados([1, "a", 1, "a", True]) == [1, "a"]  
     
-    def merge_ordenado(self, lista1, lista2):
-        """
-        Combina dos listas ordenadas en una sola lista ordenada.
-        
-        Args:
-            lista1 (list): Primera lista ordenada
-            lista2 (list): Segunda lista ordenada
-            
-        Returns:
-            list: Lista combinada y ordenada
-        """
-        pass
+    def test_merge_ordenado(self):
+        assert self.data.merge_ordenado([1, 3, 5], [2, 4, 6]) == [1, 2, 3, 4, 5, 6]
+        assert self.data.merge_ordenado([], [1, 2, 3]) == [1, 2, 3]
+        assert self.data.merge_ordenado([], []) == []
+        assert self.data.merge_ordenado([1, 2, 3], [1, 3, 5]) == [1, 1, 2, 3, 3, 5]
     
-    def rotar_lista(self, lista, k):
-        """
-        Rota los elementos de una lista k posiciones a la derecha.
-        
-        Args:
-            lista (list): Lista a rotar
-            k (int): Número de posiciones a rotar
-            
-        Returns:
-            list: Lista rotada
-        """
-        pass
+    def test_rotar_lista(self):
+        assert self.data.rotar_lista([1, 2, 3, 4, 5], 2) == [4, 5, 1, 2, 3]
+        assert self.data.rotar_lista([1, 2, 3], 5) == [2, 3, 1]  
+        assert self.data.rotar_lista([1, 2, 3], 0) == [1, 2, 3]
+        assert self.data.rotar_lista([], 3) == []
     
-    def encuentra_numero_faltante(self, lista):
-        """
-        Encuentra el número faltante en una lista de enteros del 1 al n.
-        
-        Args:
-            lista (list): Lista de enteros del 1 al n con un número faltante
-            
-        Returns:
-            int: El número que falta en la secuencia
-        """
-        pass
+    def test_encuentra_numero_faltante(self):
+        assert self.data.encuentra_numero_faltante([1, 2, 4, 5]) == 3
+        assert self.data.encuentra_numero_faltante([2, 3, 4, 5]) == 1
+        assert self.data.encuentra_numero_faltante([1, 2, 3, 4, 6]) == 5  
     
-    def es_subconjunto(self, conjunto1, conjunto2):
-        """
-        Verifica si conjunto1 es subconjunto de conjunto2 sin usar set.
-        
-        Args:
-            conjunto1 (list): Posible subconjunto
-            conjunto2 (list): Conjunto principal
-            
-        Returns:
-            bool: True si conjunto1 es subconjunto de conjunto2, False en caso contrario
-        """
-        pass
+    def test_es_subconjunto(self):
+        assert self.data.es_subconjunto([1, 2], [1, 2, 3, 4]) is True
+        assert self.data.es_subconjunto([1, 5], [1, 2, 3, 4]) is False
+        assert self.data.es_subconjunto([1, 2, 3], [1, 2, 3]) is True
+        assert self.data.es_subconjunto([], [1, 2, 3]) is True
     
-    def implementar_pila(self):
-        """
-        Implementa una estructura de datos tipo pila (stack) usando listas.
-        
-        Returns:
-            dict: Diccionario con métodos push, pop, peek y is_empty
-        """
-        pass
+    def test_implementar_pila(self):
+        pila = self.data.implementar_pila()
+        assert pila.is_empty() is True
+        pila.push(1)
+        assert pila.peek() == 1
+        pila.push(2)
+        assert pila.peek() == 2
+        assert pila.pop() == 2
+        assert pila.pop() == 1
+        assert pila.is_empty() is True
     
-    def implementar_cola(self):
-        """
-        Implementa una estructura de datos tipo cola (queue) usando listas.
-        
-        Returns:
-            dict: Diccionario con métodos enqueue, dequeue, peek y is_empty
-        """
-        pass
+    def test_implementar_cola(self):
+        cola = self.data.implementar_cola()
+        assert cola.is_empty() is True
+        cola.enqueue(1)
+        assert cola.peek() == 1
+        cola.enqueue(2)
+        assert cola.peek() == 1
+        assert cola.dequeue() == 1
+        assert cola.dequeue() == 2
+        assert cola.is_empty() is True
     
-    def matriz_transpuesta(self, matriz):
-        """
-        Calcula la transpuesta de una matriz.
-        
-        Args:
-            matriz (list): Lista de listas que representa una matriz
-            
-        Returns:
-            list: Matriz transpuesta
-        """
-        pass
+    def test_matriz_transpuesta(self):
+        assert self.data.matriz_transpuesta([[1, 2, 3], [4, 5, 6]]) == [[1, 4], [2, 5], [3, 6]]
+        assert self.data.matriz_transpuesta([[1, 2], [3, 4]]) == [[1, 3], [2, 4]]
+        assert self.data.matriz_transpuesta([[5]]) == [[5]]
+        assert self.data.matriz_transpuesta([]) == []
