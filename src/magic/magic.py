@@ -1,5 +1,5 @@
 import pytest
-from src.magic.magic import Magic
+from src.magic.magic import Magic  # Asegúrate de que esta ruta sea correcta
 
 class TestMagic:
     def setup_method(self):
