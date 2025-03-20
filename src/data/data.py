@@ -1,7 +1,5 @@
 import pytest
-from src.data.data import Data
-from .data import Data
-
+from src.data.data import Data  # Asegúrate de que esta ruta sea la correcta
 
 class TestData:
     def setup_method(self):
