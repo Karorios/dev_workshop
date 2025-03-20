@@ -1,6 +1,5 @@
 import pytest
-import math
-from src.geometric.geometric import Geometria
+from src.geometric.geometric import Geometria  # Asegúrate de que esta ruta sea correcta
 
 class TestGeometria:
     def setup_method(self):
@@ -39,4 +38,4 @@ class TestGeometria:
         assert self.geometria.es_triangulo_valido(3, 4, 5) == True
         assert self.geometria.es_triangulo_valido(1, 2, 10) == False
         assert self.geometria.es_triangulo_valido(-1, 4, 5) == False
-        assert self.geometria.es_triangulo_valido(0, 5, 5) == False  
+        assert self.geometria.es_triangulo_valido(0, 5, 5) == False
