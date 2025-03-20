@@ -1,122 +1,67 @@
-class Logica:
-    """
-    Clase con métodos para realizar operaciones de lógica booleana y algoritmos.
-    """
+import pytest
+
+class TestLogica:
+    def setup_method(self):
+        from src.logic.logic import Logica  # Mover la importación dentro del método
+        self.logica = Logica()
     
-    def AND(self, a, b):
-        """
-        Implementa la operación lógica AND.
-        
-        Args:
-            a (bool): Primer valor booleano
-            b (bool): Segundo valor booleano
-            
-        Returns:
-            bool: Resultado de a AND b
-        """
-        pass
+    def test_AND(self):
+        """Verifica la tabla de verdad de AND"""
+        assert self.logica.AND(True, True) is True
+        assert self.logica.AND(True, False) is False
+        assert self.logica.AND(False, True) is False
+        assert self.logica.AND(False, False) is False
     
-    def OR(self, a, b):
-        """
-        Implementa la operación lógica OR.
-        
-        Args:
-            a (bool): Primer valor booleano
-            b (bool): Segundo valor booleano
-            
-        Returns:
-            bool: Resultado de a OR b
-        """
-        pass
+    def test_OR(self):
+        """Verifica la tabla de verdad de OR"""
+        assert self.logica.OR(True, True) is True
+        assert self.logica.OR(True, False) is True
+        assert self.logica.OR(False, True) is True
+        assert self.logica.OR(False, False) is False
     
-    def NOT(self, a):
-        """
-        Implementa la operación lógica NOT.
-        
-        Args:
-            a (bool): Valor booleano
-            
-        Returns:
-            bool: Resultado de NOT a
-        """
-        pass
+    def test_NOT(self):
+        """Verifica la tabla de verdad de NOT"""
+        assert self.logica.NOT(True) is False
+        assert self.logica.NOT(False) is True
     
-    def XOR(self, a, b):
-        """
-        Implementa la operación lógica XOR (OR exclusivo).
-        
-        Args:
-            a (bool): Primer valor booleano
-            b (bool): Segundo valor booleano
-            
-        Returns:
-            bool: Resultado de a XOR b
-        """
-        pass
+    def test_XOR(self):
+        """Verifica la tabla de verdad de XOR"""
+        assert self.logica.XOR(True, True) is False
+        assert self.logica.XOR(True, False) is True
+        assert self.logica.XOR(False, True) is True
+        assert self.logica.XOR(False, False) is False
     
-    def NAND(self, a, b):
-        """
-        Implementa la operación lógica NAND (NOT AND).
-        
-        Args:
-            a (bool): Primer valor booleano
-            b (bool): Segundo valor booleano
-            
-        Returns:
-            bool: Resultado de a NAND b
-        """
-        pass
+    def test_NAND(self):
+        """Verifica la tabla de verdad de NAND"""
+        assert self.logica.NAND(True, True) is False
+        assert self.logica.NAND(True, False) is True
+        assert self.logica.NAND(False, True) is True
+        assert self.logica.NAND(False, False) is True
     
-    def NOR(self, a, b):
-        """
-        Implementa la operación lógica NOR (NOT OR).
-        
-        Args:
-            a (bool): Primer valor booleano
-            b (bool): Segundo valor booleano
-            
-        Returns:
-            bool: Resultado de a NOR b
-        """
-        pass
+    def test_NOR(self):
+        """Verifica la tabla de verdad de NOR"""
+        assert self.logica.NOR(True, True) is False
+        assert self.logica.NOR(True, False) is False
+        assert self.logica.NOR(False, True) is False
+        assert self.logica.NOR(False, False) is True
     
-    def XNOR(self, a, b):
-        """
-        Implementa la operación lógica XNOR (NOT XOR).
-        
-        Args:
-            a (bool): Primer valor booleano
-            b (bool): Segundo valor booleano
-            
-        Returns:
-            bool: Resultado de a XNOR b
-        """
-        pass
+    def test_XNOR(self):
+        """Verifica la tabla de verdad de XNOR"""
+        assert self.logica.XNOR(True, True) is True
+        assert self.logica.XNOR(True, False) is False
+        assert self.logica.XNOR(False, True) is False
+        assert self.logica.XNOR(False, False) is True
     
-    def implicacion(self, a, b):
-        """
-        Implementa la operación lógica de implicación (a -> b).
-        
-        Args:
-            a (bool): Primer valor booleano (antecedente)
-            b (bool): Segundo valor booleano (consecuente)
-            
-        Returns:
-            bool: Resultado de la implicación
-        """
-        pass
+    def test_implicacion(self):
+        """Verifica la tabla de verdad de la implicación"""
+        assert self.logica.implicacion(True, True) is True
+        assert self.logica.implicacion(True, False) is False
+        assert self.logica.implicacion(False, True) is True
+        assert self.logica.implicacion(False, False) is True
     
-    def bi_implicacion(self, a, b):
-        """
-        Implementa la operación lógica de bi-implicación (a <-> b).
-        
-        Args:
-            a (bool): Primer valor booleano
-            b (bool): Segundo valor booleano
-            
-        Returns:
-            bool: Resultado de la bi-implicación
-        """
-        pass
-    
-    
+    def test_bi_implicacion(self):
+        """Verifica la tabla de verdad de la bi-implicación"""
+        assert self.logica.bi_implicacion(True, True) is True
+        assert self.logica.bi_implicacion(True, False) is False
+        assert self.logica.bi_implicacion(False, True) is False
+        assert self.logica.bi_implicacion(False, False) is True
