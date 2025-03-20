@@ -1,151 +1,101 @@
-class Magic:
-    """
-    Clase con métodos para juegos matemáticos, secuencias especiales y algoritmos numéricos.
-    Incluye implementaciones de Fibonacci, números perfectos, triangulo de pascal etc.
-    """
+import pytest
+from src.magic.magic import Magic
+
+class TestMagic:
+    def setup_method(self):
+        self.magic = Magic()
     
-    def fibonacci(self, n):
-        """
-        Calcula el n-ésimo número de la secuencia de Fibonacci.
-        
-        Args:
-            n (int): Posición en la secuencia (empezando desde 0)
-            
-        Returns:
-            int: El n-ésimo número de Fibonacci
-        """
-        pass
+    def test_fibonacci(self):
+        assert self.magic.fibonacci(0) == 0
+        assert self.magic.fibonacci(1) == 1
+        assert self.magic.fibonacci(2) == 1
+        assert self.magic.fibonacci(3) == 2
+        assert self.magic.fibonacci(10) == 55
+        assert self.magic.fibonacci(10) != 35
     
-    def secuencia_fibonacci(self, n):
-        """
-        Genera los primeros n números de la secuencia de Fibonacci.
-        
-        Args:
-            n (int): Cantidad de números a generar
-            
-        Returns:
-            list: Lista con los primeros n números de Fibonacci
-        """
-        pass
+    def test_secuencia_fibonacci(self):
+        assert self.magic.secuencia_fibonacci(1) == [0]
+        assert self.magic.secuencia_fibonacci(2) == [0, 1]
+        assert self.magic.secuencia_fibonacci(5) == [0, 1, 1, 2, 3]
+        assert self.magic.secuencia_fibonacci(8) == [0, 1, 1, 2, 3, 5, 8, 13]
     
-    def es_primo(self, n):
-        """
-        Verifica si un número es primo.
-        
-        Args:
-            n (int): Número a verificar
-            
-        Returns:
-            bool: True si n es primo, False en caso contrario
-        """
-        pass
+    def test_es_primo(self):
+        assert self.magic.es_primo(2) == True
+        assert self.magic.es_primo(7) == True
+        assert self.magic.es_primo(17) == True
+        assert self.magic.es_primo(1) == False
+        assert self.magic.es_primo(4) == False
+        assert self.magic.es_primo(15) == False
+        assert self.magic.es_primo(-5) == False
     
-    def generar_primos(self, n):
-        """
-        Genera una lista de números primos hasta n.
-        
-        Args:
-            n (int): Límite superior para generar primos
-            
-        Returns:
-            list: Lista de números primos hasta n
-        """
-        pass
+    def test_generar_primos(self):
+        assert self.magic.generar_primos(10) == [2, 3, 5, 7]
+        assert self.magic.generar_primos(20) == [2, 3, 5, 7, 11, 13, 17, 19]
+        assert self.magic.generar_primos(1) == []
     
-    def es_numero_perfecto(self, n):
-        """
-        Verifica si un número es perfecto (igual a la suma de sus divisores propios).
-        
-        Args:
-            n (int): Número a verificar
-            
-        Returns:
-            bool: True si n es un número perfecto, False en caso contrario
-        """
-        pass
+    def test_es_numero_perfecto(self):
+        assert self.magic.es_numero_perfecto(6) == True
+        assert self.magic.es_numero_perfecto(28) == True
+        assert self.magic.es_numero_perfecto(10) == False
+        assert self.magic.es_numero_perfecto(15) == False
+        assert self.magic.es_numero_perfecto(0) == False
+        assert self.magic.es_numero_perfecto(1) == False
     
-    def triangulo_pascal(self, filas):
-        """
-        Genera las primeras n filas del triángulo de Pascal.
-        
-        Args:
-            filas (int): Número de filas a generar
-            
-        Returns:
-            list: Lista de listas que representa el triángulo de Pascal
-        """
-        pass
+    def test_triangulo_pascal(self):
+        assert self.magic.triangulo_pascal(1) == [[1]]
+        assert self.magic.triangulo_pascal(3) == [[1], [1, 1], [1, 2, 1]]
+        assert self.magic.triangulo_pascal(5) == [
+            [1],
+            [1, 1],
+            [1, 2, 1],
+            [1, 3, 3, 1],
+            [1, 4, 6, 4, 1]
+        ]
     
-    def factorial(self, n):
-        """
-        Calcula el factorial de un número.
-        
-        Args:
-            n (int): Número para calcular su factorial
-            
-        Returns:
-            int: El factorial de n
-        """
-        pass
+    def test_factorial(self):
+        assert self.magic.factorial(0) == 1
+        assert self.magic.factorial(1) == 1
+        assert self.magic.factorial(5) == 120
+        assert self.magic.factorial(10) == 3628800
     
-    def mcd(self, a, b):
-        """
-        Calcula el máximo común divisor de dos números.
-        
-        Args:
-            a (int): Primer número
-            b (int): Segundo número
-            
-        Returns:
-            int: El máximo común divisor de a y b
-        """
-        pass
+    def test_mcd(self):
+        assert self.magic.mcd(48, 18) == 6
+        assert self.magic.mcd(15, 25) == 5
+        assert self.magic.mcd(7, 13) == 1
+        assert self.magic.mcd(0, 5) == 5
     
-    def mcm(self, a, b):
-        """
-        Calcula el mínimo común múltiplo de dos números.
-        
-        Args:
-            a (int): Primer número
-            b (int): Segundo número
-            
-        Returns:
-            int: El mínimo común múltiplo de a y b
-        """
-        pass
+    def test_mcm(self):
+        assert self.magic.mcm(4, 6) == 12
+        assert self.magic.mcm(15, 25) == 75
+        assert self.magic.mcm(7, 13) == 91
+        assert self.magic.mcm(5, 0) == 0
     
-    def suma_digitos(self, n):
-        """
-        Calcula la suma de los dígitos de un número.
-        
-        Args:
-            n (int): Número para sumar sus dígitos
-            
-        Returns:
-            int: La suma de los dígitos de n
-        """
-        pass
+    def test_suma_digitos(self):
+        assert self.magic.suma_digitos(123) == 6
+        assert self.magic.suma_digitos(9999) == 36
+        assert self.magic.suma_digitos(0) == 0
+        assert self.magic.suma_digitos(7) == 7
     
-    def es_numero_armstrong(self, n):
-        """
-        Verifica si un número es de Armstrong (igual a la suma de sus dígitos elevados a la potencia del número de dígitos).
-        
-        Args:
-            n (int): Número a verificar
-            
-        Returns:
-            bool: True si n es un número de Armstrong, False en caso contrario
-        """
-        pass
+    def test_es_numero_armstrong(self):
+        assert self.magic.es_numero_armstrong(153) == True
+        assert self.magic.es_numero_armstrong(370) == True
+        assert self.magic.es_numero_armstrong(371) == True
+        assert self.magic.es_numero_armstrong(123) == False
+        assert self.magic.es_numero_armstrong(100) == False
     
-    def es_cuadrado_magico(self, matriz):
-        """
-        Verifica si una matriz es un cuadrado mágico (suma igual en filas, columnas y diagonales).
+    def test_es_cuadrado_magico(self):
+        cuadrado_magico = [
+            [2, 7, 6],
+            [9, 5, 1],
+            [4, 3, 8]
+        ]
+        assert self.magic.es_cuadrado_magico(cuadrado_magico) == True
         
-        Args:
-            matriz (list): Lista de listas que representa una matriz cuadrada
-            
-        Returns:
-            bool: True si es un cuadrado mágico, False en caso contrario
-        """
-        pass
+        no_magico = [
+            [1, 2, 3],
+            [4, 5, 6],
+            [7, 8, 9]
+        ]
+        assert self.magic.es_cuadrado_magico(no_magico) == False
+        
+        assert self.magic.es_cuadrado_magico([[5]]) == True
