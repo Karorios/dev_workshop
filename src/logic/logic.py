@@ -1,8 +1,8 @@
 import pytest
+from src.logic.logic import Logica  # Asegúrate de que esta ruta sea correcta
 
 class TestLogica:
     def setup_method(self):
-        from src.logic.logic import Logica  # Mover la importación dentro del método
         self.logica = Logica()
     
     def test_AND(self):
